@@ -1,0 +1,12 @@
+{{ with .Site.Params.links_inner }}
+<section class="widget">
+    <h3 class="widget-title" title="特别的爱给特别的你">特栏</h3>
+    <ul class="widget-list">
+        {{ range . }}
+        <li>
+            <a href="{{ .url }}" title="{{ if .title }}{{ .title }}{{ else }}{{ .name }}{{ end }}">{{ .name }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</section>
+{{ end }}

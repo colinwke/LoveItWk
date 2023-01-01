@@ -1,0 +1,10 @@
+{{- $categories := slice -}}
+{{- with .Params.categories -}}
+    <span class="post-category">
+        {{- range $index, $value := . -}}
+            {{- if gt $index 0 }}&nbsp;{{ end -}}
+            {{- $category := partialCached "function/path.html" $value $value | printf "/categories/%v" | $.Site.GetPage -}}
+            <a href="{{ $category.RelPermalink }}" title="{{ $category.Title }}"><i class="fas fa-folder fa-fw"></i>&nbsp;{{ $category.Title }}</a>
+        {{- end -}}
+    </span>&nbsp;
+{{- end -}}

@@ -1,0 +1,17 @@
+{{ with .Site.Params.ads }}
+<section class="widget">
+    <ul class="widget-list">
+        {{ range . }}
+        <li>
+            <a href="{{ .url }}" title="{{ .title }}" target="_blank" style="color:red">
+                {{ if .img }}
+                <img src="{{ .img }}" width="100%" height="100%">
+                {{ else }}
+                {{ .title }}
+                {{ end }}
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+</section>
+{{ end }}
