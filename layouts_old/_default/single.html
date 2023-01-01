@@ -1,0 +1,5 @@
+{{/*--single是单个页面, 分为_default/single和posts/single, 也可以自己创建archives/single, 定义了页面的布局. head格式如下:---title: "归档"type: archives---这里默认(没哟定义)的页面布局使用posts一样的*/}}
+{{- define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end -}}
+{{- define "content" -}}
+    {{- partial "cus/single_default.html" . -}}
+{{- end -}}

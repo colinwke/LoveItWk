@@ -1,0 +1,58 @@
+// ==============================
+// Custom style
+// 自定义样式
+// ==============================
+
+@media only screen and (min-width: 960px) {
+  #sidebar {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 16%;
+    //width: $MAX_LENGTH;
+    //padding: 0 .8rem;
+    @include overflow-wrap(break-word);
+    //box-sizing: border-box;
+    top: 5rem;
+  }
+}
+
+.widget {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.widget-title {
+  color: #666;
+  border-bottom: 1px solid #eee;
+  display: block;
+}
+
+.widget-list {
+  list-style: none;
+  padding: 0;
+}
+
+.widget-list li {
+  margin: 3px 0;
+  font-size: 15px;
+}
+
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+
+.hr-edge-weak {
+    /*https://www.zhangxinxu.com/wordpress/2021/05/css-html-hr/*/
+    border: 0;
+    padding-top: 1px;
+    background: linear-gradient(to right, transparent, #d0d0d5, transparent);
+}

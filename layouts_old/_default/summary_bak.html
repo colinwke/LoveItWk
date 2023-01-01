@@ -1,0 +1,51 @@
+{{/*首页的文章概览*/}}
+{{- $params := .Params | merge .Site.Params.page -}}
+
+<article class="single summary" itemscope itemtype="http://schema.org/Article">
+    {{- /* Title */ -}}
+    <h1 class="single-title" itemprop="name headline">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h1>
+
+    {{- /* Meta */ -}}
+    <div class="post-meta">
+        <!--{{- partial "summary/author.html" . -}}-->
+        {{- partial "summary/date.html" . -}}
+        {{- partial "summary/list_category.html" . -}}
+        {{- partial "summary/list_tag.html" . -}}
+    </div>
+
+    {{- /* Featured image */ -}}
+    {{- $image := $params.featuredimagepreview | default $params.featuredimage -}}
+    {{- with .Resources.GetMatch "featured-image" -}}
+        {{- $image = .RelPermalink -}}
+    {{- end -}}
+    {{- with .Resources.GetMatch "featured-image-preview" -}}
+        {{- $image = .RelPermalink -}}
+    {{- end -}}
+    {{- with $image -}}
+        <div class="featured-image-preview">
+            <a href="{{ $.RelPermalink }}">
+                {{- dict "Src" . "Title" $.Description "Resources" $.Resources | partial "plugin/image.html" -}}
+            </a>
+        </div>
+    {{- end -}}
+
+    {{- /* Summary content */ -}}
+    <a href="{{ .RelPermalink }}">
+        <div class="headerLink" style="opacity: 0.8;">  <!--内容展示颜色-->
+            {{- with .Summary -}}
+                {{- dict "Content" . "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+                ...
+            {{- else -}}
+                {{- .Description | safeHTML -}}
+            {{- end -}}
+        </div>
+    </a>
+
+    <!--{{- /* Footer */ -}}
+    <div class="post-footer">
+        <span></span>
+        <a href="{{ .RelPermalink }}">{{ T "readMore" }}</a>
+    </div>-->
+</article>
