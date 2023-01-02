@@ -1,5 +1,7 @@
 <section class="widget">
-    <h3 class="widget-title">最近文章</h3>
+    <h3 class="widget-title">
+        <a href="/posts.html" title="click ok" >最近文章</a>
+    </h3>
     <ul class="widget-list">
         {{ range first 10 (where (where .Site.Pages "Type" "in" (slice "post" "posts")) "Kind" "page") }}
         <li>

@@ -2,31 +2,11 @@
 <header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="{{ .Site.Home.RelPermalink }}" title="{{ .Site.Title }}">
-                {{- with .Site.Params.header.title -}}
-                    {{- with .logo -}}
-                        {{- dict "Src" . "Class" "logo" | partial "plugin/img.html" -}}
-                    {{- end -}}
-                    {{- with .pre -}}
-                        <span class="header-title-pre">{{ . | safeHTML }}</span>
-                    {{- end -}}
-                    {{- if .typeit -}}
-                        {{- $id := dict "Content" .name "Scratch" $.Scratch | partial "function/id.html" -}}
-                        <span id="{{ $id }}" class="typeit"></span>
-                        {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}}
-                    {{- else -}}
-                        {{- .name -}}
-                    {{- end -}}
-                    {{- with .post -}}
-                        <span class="header-title-post">{{ . | safeHTML }}</span>
-                    {{- end -}}
-                {{- else -}}
-                    {{- .Site.Title -}}
-                {{- end -}}
-            </a>
+            {{- partial "cus/header/header_title.html" . -}}
         </div>
         <div class="menu">
             <div class="menu-inner">
+                {{- partial "cus/header/header_title.html" . -}}
                 {{- range .Site.Menus.main -}}
                     {{- $url := .URL | relLangURL -}}
                     {{- with .Page -}}
@@ -59,7 +39,7 @@
                 </a>
                 {{- if .Site.IsMultiLingual -}}
                 <a href="javascript:void(0);" class="menu-item language" title="{{ T "selectLanguage" }}">
-                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <i class="fa fa-globe" aria-hidden="true"></i>
                     <select class="language-select" id="language-select-desktop" onchange="location = this.value;">
                         {{- if eq .Kind "404" -}}
                             {{- /* https://github.com/dillonzq/LoveIt/issues/378 */ -}}
@@ -150,7 +130,7 @@
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a>
             {{- if .Site.IsMultiLingual -}}
-            
+
                 <a href="javascript:void(0);" class="menu-item" title="{{ T "selectLanguage" }}">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
                     <select class="language-select" onchange="location = this.value;">

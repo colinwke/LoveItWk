@@ -35,6 +35,12 @@
                     <span class="author" itemprop="copyrightHolder">&nbsp;<a href="{{ $.Site.Author.link | default .Site.Home.RelPermalink }}" target="_blank">{{ .Site.Author.name }}</a></span>
                 {{- end -}}
 
+                <br>
+
+                {{- if ne .Site.Params.footer.updateDate false -}}
+                    <span class="license" itemprop="copyrightHolder">&nbsp;<a href="{{ $.Site.Author.link | default .Site.Home.RelPermalink }}" target="_blank">{{ .Site.Params.footer.updateDate }} updated</a></span>
+                {{- end -}}
+
                 {{- /* License */ -}}
                 {{- with .Site.Params.footer.license -}}
                     &nbsp;|&nbsp;<span class="license">{{ . | safeHTML }}</span>
@@ -45,6 +51,8 @@
                     <span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">{{ . | safeHTML }}</span>
                 {{- end -}}
+
+
             </div>
         </div>
     </footer>
